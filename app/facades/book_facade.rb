@@ -11,7 +11,7 @@ class BookFacade
       data: {
         attributes: {
           destination: data[:name],
-          forcast: {
+          forecast: {
             summary: weather[:current][:weather][0][:description],
             temperature: weather[:current][:temp]
           },
@@ -27,6 +27,7 @@ class BookFacade
         }
       }
     }
+
     Book.new(attr)
   end
 end

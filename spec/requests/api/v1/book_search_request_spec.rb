@@ -7,9 +7,9 @@ RSpec.describe "open book api" do
     expect(response).to be_successful
 
     data = JSON.parse(response.body, symbolize_names: true)[:data]
-
+    binding.pry
     expect(data).to have_key(:id)
-    expect(data[:id]).to be(null)
+    expect(data[:id]).to be(nil)
 
     expect(data).to have_key(:type)
     expect(data[:type]).to eq("books")
@@ -17,11 +17,11 @@ RSpec.describe "open book api" do
     expect(data[:attributes]).to have_key(:destination)
     expect(data[:attributes][:destination]).to be_a(String)
 
-    expect(data[:attributes][:forcast]).to have_key(:summary)
-    expect(data[:attributes][:forcast][:summary]).to be_a(String)
+    expect(data[:attributes][:forecast]).to have_key(:summary)
+    expect(data[:attributes][:forecast][:summary]).to be_a(String)
 
-    expect(data[:attributes][:forcast]).to have_key(:temperature)
-    expect(data[:attributes][:forcast][:temperature]).to be_a(String)
+    expect(data[:attributes][:forecast]).to have_key(:temperature)
+    expect(data[:attributes][:forecast][:temperature]).to be_a(String)
 
     expect(data[:attributes]).to have_key(:total_books_found)
     expect(data[:attributes][:total_books_found]).to be_an(Integer)

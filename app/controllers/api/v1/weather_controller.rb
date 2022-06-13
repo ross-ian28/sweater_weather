@@ -6,6 +6,7 @@ class Api::V1::WeatherController < ApplicationController
   end
 
   def show
-    UnsplashFacade.get_photo("location")
+    photo = UnsplashFacade.get_photo("location").first
+    render json: PhotoSerializer.new(photo)
   end
 end

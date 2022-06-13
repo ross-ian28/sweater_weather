@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "open book api" do
   it "returns books and weather based on location" do
-    get "/api/v1/book-search?location=denver,co&quantity=5"
+    get "/api/v1/book-search?location=denver&quantity=5"
 
     expect(response).to be_successful
 

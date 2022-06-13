@@ -5,28 +5,28 @@ class BookFacade
 
     weather = WeatherService.get_location_weather(cords[:lat], cords[:lng])
 
-    BookService.get_location_cords(location).map do |data|
-      binding.pry
+    data = BookService.get_book_data(location, quantity)
 
-      attr = {
-        data: {
-          attributes: {
-            destination: data[:name],
-            forcast: {
-              summary:
-            },
-            total_books_found: data[:work_count]
-            books: [
-              {
-                isbn: [
-                  data[works]
-                ]
-              }
-            ]
-          }
+    attr = {
+      data: {
+        attributes: {
+          destination: data[:name],
+          forcast: {
+            summary: weather[:current][:weather][0][:description],
+            temperature: weather[:current][:temp]
+          },
+          total_books_found: data[:work_count],
+          books: [
+            {
+              isbn: [
+                data[:works][1][:availability][:isbn]
+              ],
+              title: data[:works][0][:title]
+            }
+          ]
         }
       }
-      Book.new(attr)
-    end
+    }
+    Book.new(attr)
   end
 end

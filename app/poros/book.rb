@@ -5,7 +5,6 @@ class Book
   def initialize(data)
     attr = data[:data][:attributes]
 
-    @id = nil
     @destination = attr[:destination]
     @forecast_summary = attr[:forecast][:summary]
     @forcast_temp = attr[:forecast][:temperature]

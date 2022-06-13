@@ -5,6 +5,5 @@ RSpec.describe "weather api" do
     get "/api/v1/backgrounds?location=Denver,CO"
 
     expect(response).to be_successful
-    binding.pry
   end
 end
